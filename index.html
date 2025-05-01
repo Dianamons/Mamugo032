@@ -1,128 +1,150 @@
 <!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin SD Negeri 032 Mamugo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD Negeri 032 Mamugo</title>
   <style>
     body {
-      background-color: #1e1e2f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      padding: 10px;
-    }
-    h1 {
-      text-align: center;
-      color: #3399ff;
-    }
-    .section {
-      background-color: #2a2a40;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
-    }
-    label, select, input, textarea, button {
-      display: block;
-      margin: 10px 0;
-      width: 100%;
-      max-width: 400px;
-    }
-    button {
-      background-color: #3399ff;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #111;
       color: white;
+    }
+    header {
+      background-color: #1976d2;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    header p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #0d47a1;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background-color: #2196f3;
       border: none;
-      padding: 10px;
-      border-radius: 8px;
+      margin: 0.3rem;
+      padding: 0.7rem 1.2rem;
+      color: white;
+      font-size: 1rem;
+      border-radius: 0.5rem;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #2277cc;
+    main {
+      padding: 1rem;
+    }
+    .card {
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Panel Admin - SD Negeri 032 Mamugo</h1>  <div class="section">
-    <h2>Login Admin</h2>
-    <input type="password" id="adminPass" placeholder="Masukkan Password Admin">
-    <button onclick="loginAdmin()">Login</button>
-  </div>  <div class="section">
-    <h2>Tambah Siswa</h2>
-    <select id="kelasSiswa">
-      <option value="">-- Pilih Kelas --</option>
-      <option>Kelas 1</option><option>Kelas 2</option><option>Kelas 3</option>
-      <option>Kelas 4</option><option>Kelas 5</option><option>Kelas 6</option>
-    </select>
-    <input type="text" id="namaSiswa" placeholder="Nama Siswa">
-    <input type="text" id="alamatSiswa" placeholder="Alamat Siswa">
-    <button onclick="tambahSiswa()">Tambah Siswa</button>
-  </div>  <div class="section">
-    <h2>Tambah Jadwal</h2>
-    <select id="kelasJadwal">
-      <option value="">-- Pilih Kelas --</option>
-      <option>Kelas 1</option><option>Kelas 2</option><option>Kelas 3</option>
-      <option>Kelas 4</option><option>Kelas 5</option><option>Kelas 6</option>
-    </select>
-    <textarea id="isiJadwal" placeholder="Masukkan Jadwal"></textarea>
-    <button onclick="simpanJadwal()">Simpan Jadwal</button>
-  </div>  <div class="section">
-    <h2>Upload Latar Belakang Beranda</h2>
-    <input type="text" id="urlLatarBeranda" placeholder="Masukkan URL Gambar">
-    <button onclick="gantiLatarBeranda()">Simpan Latar</button>
-  </div>  <div class="section">
-    <h2>Upload Latar Kelas</h2>
-    <select id="kelasLatar">
-      <option value="">-- Pilih Kelas --</option>
-      <option>Kelas 1</option><option>Kelas 2</option><option>Kelas 3</option>
-      <option>Kelas 4</option><option>Kelas 5</option><option>Kelas 6</option>
-    </select>
-    <input type="text" id="urlLatarKelas" placeholder="Masukkan URL Gambar">
-    <button onclick="gantiLatarKelas()">Simpan Latar Kelas</button>
-  </div>  <div class="section">
-    <h2>Upload Galeri Foto</h2>
-    <input type="text" id="urlGaleri" placeholder="URL Gambar dari Imgur">
-    <input type="text" id="ketGaleri" placeholder="Keterangan Gambar">
-    <button onclick="tambahGaleri()">Tambah Foto Galeri</button>
-  </div>  <div class="section">
-    <h2>Pengumuman & Agenda</h2>
-    <textarea id="pengumuman" placeholder="Tulis pengumuman atau agenda..."></textarea>
-    <button onclick="simpanPengumuman()">Simpan Info</button>
-  </div>  <div class="section">
-    <h2>Sambutan Kepala Sekolah</h2>
-    <textarea id="sambutan" placeholder="Tulis sambutan..."></textarea>
-    <button onclick="simpanSambutan()">Simpan Sambutan</button>
-  </div>  <div class="section">
-    <h2>Jam & Kontak Sekolah</h2>
-    <input type="text" id="jam" placeholder="Jam Operasional">
-    <input type="text" id="kontak" placeholder="Nomor Kontak">
-    <button onclick="simpanKontak()">Simpan</button>
-  </div>  <script>
-    function loginAdmin() {
-      const pass = document.getElementById("adminPass").value;
-      if (pass === "admin032") alert("Login berhasil");
-      else alert("Password salah");
+  <header>
+    <h1>SD Negeri 032 Mamugo</h1>
+    <p>Jam: 07.30 – 13.00 | Kontak WA: 085723657734</p>
+  </header>
+  <nav>
+    <button onclick="show('beranda')">Beranda</button>
+    <button onclick="show('siswa')">Siswa</button>
+    <button onclick="show('jadwal')">Jadwal</button>
+    <button onclick="show('galeri')">Galeri</button>
+    <button onclick="show('admin')">Admin</button>
+  </nav>
+  <main>
+    <section id="beranda" class="card">
+      <h2>Selamat Datang di SD Negeri 032 Mamugo</h2>
+      <p>Pengumuman: <span id="pengumuman"></span></p>
+      <p>Agenda: <span id="agenda">-</span></p>
+      <p>Sambutan: <span id="sambutan">-</span></p>
+      <h3>Jumlah Siswa per Kelas</h3>
+      <div id="jumlahSiswa"></div>
+    </section><section id="siswa" class="card hidden">
+  <h2>Data Siswa</h2>
+  <div id="dataSiswa">Belum ada data siswa.</div>
+</section>
+
+<section id="jadwal" class="card hidden">
+  <h2>Jadwal Pelajaran</h2>
+  <div id="dataJadwal">Belum ada jadwal.</div>
+</section>
+
+<section id="galeri" class="card hidden">
+  <h2>Galeri Foto</h2>
+  <div id="dataGaleri">Belum ada foto.</div>
+</section>
+
+<section id="admin" class="card hidden">
+  <h2>Panel Admin</h2>
+  <button onclick="ubahPengumuman()">Ubah Pengumuman</button>
+  <button onclick="ubahAgenda()">Ubah Agenda</button>
+  <button onclick="ubahSambutan()">Ubah Sambutan</button>
+  <button onclick="tambahSiswa()">Tambah Siswa</button>
+  <button onclick="tambahJadwal()">Tambah Jadwal</button>
+  <button onclick="tambahFoto()">Tambah Foto Galeri</button>
+</section>
+
+  </main>  <script>
+    const show = (id) => {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    };
+
+    function ubahPengumuman() {
+      const isi = prompt('Masukkan pengumuman baru:');
+      if (isi) document.getElementById('pengumuman').textContent = isi;
+    }
+    function ubahAgenda() {
+      const isi = prompt('Masukkan agenda baru:');
+      if (isi) document.getElementById('agenda').textContent = isi;
+    }
+    function ubahSambutan() {
+      const isi = prompt('Masukkan sambutan baru:');
+      if (isi) document.getElementById('sambutan').textContent = isi;
     }
     function tambahSiswa() {
-      alert("Siswa ditambahkan (simulasi)");
+      const nama = prompt('Nama siswa:');
+      const kelas = prompt('Kelas:');
+      const div = document.createElement('div');
+      div.textContent = `${nama} (Kelas ${kelas})`;
+      document.getElementById('dataSiswa').appendChild(div);
     }
-    function simpanJadwal() {
-      alert("Jadwal disimpan (simulasi)");
+    function tambahJadwal() {
+      const jadwal = prompt('Masukkan jadwal (misalnya: Senin - Matematika):');
+      const div = document.createElement('div');
+      div.textContent = jadwal;
+      document.getElementById('dataJadwal').appendChild(div);
     }
-    function gantiLatarBeranda() {
-      alert("Latar belakang beranda diubah (simulasi)");
+    function tambahFoto() {
+      const url = prompt('Masukkan URL gambar (imgur):');
+      const ket = prompt('Masukkan keterangan gambar:');
+      if (url) {
+        const div = document.createElement('div');
+        div.innerHTML = `<img src="${url}" style="max-width:100%"><p>${ket}</p>`;
+        document.getElementById('dataGaleri').appendChild(div);
+      }
     }
-    function gantiLatarKelas() {
-      alert("Latar belakang kelas diubah (simulasi)");
-    }
-    function tambahGaleri() {
-      alert("Foto galeri ditambahkan (simulasi)");
-    }
-    function simpanPengumuman() {
-      alert("Pengumuman disimpan (simulasi)");
-    }
-    function simpanSambutan() {
-      alert("Sambutan disimpan (simulasi)");
-    }
-    function simpanKontak() {
-      alert("Kontak disimpan (simulasi)");
+
+    // Dummy jumlah siswa per kelas
+    const jumlah = { 1: 1, 2: 0, 3: 0, 4: 0 };
+    for (let i = 1; i <= 4; i++) {
+      const p = document.createElement('p');
+      p.textContent = `Kelas ${i}: ${jumlah[i]} siswa`;
+      document.getElementById('jumlahSiswa').appendChild(p);
     }
   </script></body>
 </html>
