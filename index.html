@@ -51,13 +51,23 @@
     .hidden {
       display: none;
     }
+    #foto-kegiatan img {
+      max-width: 150px;
+      border-radius: 10px;
+    }
+    #foto-kegiatan {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>SD Negeri 032 Mamugo</h1>
     <p>Jam: 07.30 – 13.00 | Kontak: 085723657734</p>
-  </header>  <nav>
+  </header>
+  <nav>
     <button onclick="showSection('beranda')">Beranda</button>
     <button onclick="showSection('siswa')">Siswa</button>
     <button onclick="showSection('jadwal')">Jadwal</button>
@@ -66,7 +76,7 @@
     <h2>Selamat Datang di SD Negeri 032 Mamugo</h2>
     <div id="pengumuman"></div>
     <div id="agenda"></div>
-    <div id="galeri"></div>
+    <div id="foto-kegiatan"></div>
     <div id="sambutan"></div>
   </section>  <section id="siswa" class="hidden">
     <h2>Daftar Siswa</h2>
@@ -145,11 +155,17 @@
   <button onclick="simpanLatar('kelas')">Simpan Latar Kelas</button>
 </div>
 
+<div class="admin-section">
+  <h3>Upload Foto Kegiatan</h3>
+  <input id="fotoUrl" placeholder="URL Gambar (Imgur)" />
+  <input id="fotoKeterangan" placeholder="Keterangan Foto" />
+  <button onclick="tambahFotoKegiatan()">Tambah Foto</button>
+</div>
+
   </section>  <script>
     function showSection(id) {
       document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
-
       if (id === 'beranda') setBackground('beranda');
       else if (id === 'siswa') setBackground('kelas');
     }
@@ -219,8 +235,35 @@
       });
     }
 
-    // Load awal
+    function tambahFotoKegiatan() {
+      const url = document.getElementById('fotoUrl').value;
+      const ket = document.getElementById('fotoKeterangan').value;
+      if (url && ket) {
+        const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
+        galeri.unshift({ url, ket });
+        localStorage.setItem('galeri', JSON.stringify(galeri));
+        document.getElementById('fotoUrl').value = "";
+        document.getElementById('fotoKeterangan').value = "";
+        tampilkanFotoKegiatan();
+      }
+    }
+
+    function tampilkanFotoKegiatan() {
+      const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
+      const kontainer = document.getElementById('foto-kegiatan');
+      kontainer.innerHTML = '';
+      galeri.slice(0, 2).forEach(foto => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <img src="${foto.url}" alt="Kegiatan">
+          <p>${foto.ket}</p>
+        `;
+        kontainer.appendChild(div);
+      });
+    }
+
     showSection('beranda');
     setBackground('beranda');
+    tampilkanFotoKegiatan();
   </script></body>
 </html>
