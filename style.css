@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* mode malam */
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #007bff; /* biru */
+  padding: 10px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #1e1e1e;
+  padding: 10px;
+}
+
+nav button {
+  background-color: #007bff;
+  color: white;
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #0056b3;
+}
+
+section {
+  padding: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
