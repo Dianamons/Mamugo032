@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="id">
-<head>
+<!DOCTYPE html><html lang="id"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SD Negeri 032 Mamugo</title>
@@ -15,6 +14,10 @@
       background-color: #007bff;
       padding: 1rem;
       text-align: center;
+    }
+    header img {
+      max-height: 100px;
+      border-radius: 10px;
     }
     nav {
       display: flex;
@@ -64,23 +67,24 @@
 </head>
 <body>
   <header>
-    <h1>SD Negeri 032 Mamugo</h1>
-    <p>NPSN: 10405282 | Akreditasi: A
-
-SK Pendirian: 01 Januari 1998 | SK Operasional: 421/DISDIK/-PRG/1219 (15 Mei 2008)</p>
+    <img id="logo-header" src="" alt="Logo Sekolah" />
+    <p>NPSN: 10405282 | Akreditasi: A<br>
+    SK Pendirian: 01 Januari 1998 | SK Operasional: 421/DISDIK/-PRG/1219 (15 Mei 2008)</p>
   </header>
   <nav>
     <button onclick="showSection('beranda')">Beranda</button>
     <button onclick="showSection('siswa')">Siswa</button>
     <button onclick="showSection('jadwal')">Jadwal</button>
     <button onclick="showSection('admin')">Admin</button>
-  </nav>  <section id="beranda">
+  </nav>
+  <section id="beranda">
     <h2>Kegiatan SD Negeri 032 Mamugo</h2>
     <div id="pengumuman"></div>
     <div id="agenda"></div>
     <div id="foto-kegiatan"></div>
     <div id="sambutan"></div>
-  </section>  <section id="siswa" class="hidden">
+  </section>
+  <section id="siswa" class="hidden">
     <h2>Daftar Siswa</h2>
     <select id="kelas-siswa" onchange="tampilkanSiswa()">
       <option value="">-- Pilih Kelas --</option>
@@ -92,7 +96,8 @@ SK Pendirian: 01 Januari 1998 | SK Operasional: 421/DISDIK/-PRG/1219 (15 Mei 200
       <option value="6">Kelas 6</option>
     </select>
     <ul id="daftar-siswa"></ul>
-  </section>  <section id="jadwal" class="hidden">
+  </section>
+  <section id="jadwal" class="hidden">
     <h2>Jadwal Pelajaran</h2>
     <select id="kelas-jadwal" onchange="tampilkanJadwal()">
       <option value="">-- Pilih Kelas --</option>
@@ -104,170 +109,190 @@ SK Pendirian: 01 Januari 1998 | SK Operasional: 421/DISDIK/-PRG/1219 (15 Mei 200
       <option value="6">Kelas 6</option>
     </select>
     <ul id="daftar-jadwal"></ul>
-  </section>  <section id="admin" class="hidden">
-    <h2>Panel Admin</h2><div class="admin-section">
-  <h3>Tambah Siswa</h3>
-  <select id="kelas-tambah">
-    <option value="">-- Pilih Kelas --</option>
-    <option value="1">Kelas 1</option>
-    <option value="2">Kelas 2</option>
-    <option value="3">Kelas 3</option>
-    <option value="4">Kelas 4</option>
-    <option value="5">Kelas 5</option>
-    <option value="6">Kelas 6</option>
-  </select>
-  <input id="nama-siswa" placeholder="Nama Siswa" />
-  <input id="alamat-siswa" placeholder="Alamat" />
-  <button onclick="tambahSiswa()">Tambah Siswa</button>
-</div>
-
-<div class="admin-section">
-  <h3>Tambah Jadwal</h3>
-  <select id="kelas-jadwal-admin">
-    <option value="">-- Pilih Kelas --</option>
-    <option value="1">Kelas 1</option>
-    <option value="2">Kelas 2</option>
-    <option value="3">Kelas 3</option>
-    <option value="4">Kelas 4</option>
-    <option value="5">Kelas 5</option>
-    <option value="6">Kelas 6</option>
-  </select>
-  <textarea id="isi-jadwal" placeholder="Contoh: Senin - Matematika"></textarea>
-  <button onclick="simpanJadwal()">Simpan Jadwal</button>
-</div>
-
-<div class="admin-section">
-  <h3>URL Latar Belakang Beranda</h3>
-  <input id="url-latar-beranda" placeholder="URL Gambar" />
-  <button onclick="simpanLatar('beranda')">Simpan Latar Beranda</button>
-</div>
-
-<div class="admin-section">
-  <h3>URL Latar Belakang per Kelas</h3>
-  <select id="kelas-latar">
-    <option value="">-- Pilih Kelas --</option>
-    <option value="1">Kelas 1</option>
-    <option value="2">Kelas 2</option>
-    <option value="3">Kelas 3</option>
-    <option value="4">Kelas 4</option>
-    <option value="5">Kelas 5</option>
-    <option value="6">Kelas 6</option>
-  </select>
-  <input id="url-latar-kelas" placeholder="URL Gambar" />
-  <button onclick="simpanLatar('kelas')">Simpan Latar Kelas</button>
-</div>
-
-<div class="admin-section">
-  <h3>Upload Foto Kegiatan</h3>
-  <input id="fotoUrl" placeholder="URL Gambar (Imgur)" />
-  <input id="fotoKeterangan" placeholder="Keterangan Foto" />
-  <button onclick="tambahFotoKegiatan()">Tambah Foto</button>
-</div>
-
-  </section>  <script>
+  </section>
+  <section id="admin" class="hidden">
+    <h2>Panel Admin</h2>
+    <div class="admin-section">
+      <h3>Tambah Siswa</h3>
+      <select id="kelas-tambah">
+        <option value="">-- Pilih Kelas --</option>
+        <option value="1">Kelas 1</option>
+        <option value="2">Kelas 2</option>
+        <option value="3">Kelas 3</option>
+        <option value="4">Kelas 4</option>
+        <option value="5">Kelas 5</option>
+        <option value="6">Kelas 6</option>
+      </select>
+      <input id="nama-siswa" placeholder="Nama Siswa" />
+      <input id="alamat-siswa" placeholder="Alamat" />
+      <button onclick="tambahSiswa()">Tambah Siswa</button>
+    </div>
+    <div class="admin-section">
+      <h3>Tambah Jadwal</h3>
+      <select id="kelas-jadwal-admin">
+        <option value="">-- Pilih Kelas --</option>
+        <option value="1">Kelas 1</option>
+        <option value="2">Kelas 2</option>
+        <option value="3">Kelas 3</option>
+        <option value="4">Kelas 4</option>
+        <option value="5">Kelas 5</option>
+        <option value="6">Kelas 6</option>
+      </select>
+      <textarea id="isi-jadwal" placeholder="Contoh: Senin - Matematika"></textarea>
+      <button onclick="simpanJadwal()">Simpan Jadwal</button>
+    </div>
+    <div class="admin-section">
+      <h3>URL Latar Belakang Beranda</h3>
+      <input id="url-latar-beranda" placeholder="URL Gambar" />
+      <button onclick="simpanLatar('beranda')">Simpan Latar Beranda</button>
+    </div>
+    <div class="admin-section">
+      <h3>URL Latar Belakang per Kelas</h3>
+      <select id="kelas-latar">
+        <option value="">-- Pilih Kelas --</option>
+        <option value="1">Kelas 1</option>
+        <option value="2">Kelas 2</option>
+        <option value="3">Kelas 3</option>
+        <option value="4">Kelas 4</option>
+        <option value="5">Kelas 5</option>
+        <option value="6">Kelas 6</option>
+      </select>
+      <input id="url-latar-kelas" placeholder="URL Gambar" />
+      <button onclick="simpanLatar('kelas')">Simpan Latar Kelas</button>
+    </div>
+    <div class="admin-section">
+      <h3>Upload Foto Kegiatan</h3>
+      <input id="fotoUrl" placeholder="URL Gambar (Imgur)" />
+      <input id="fotoKeterangan" placeholder="Keterangan Foto" />
+      <button onclick="tambahFotoKegiatan()">Tambah Foto</button>
+    </div>
+    <div class="admin-section">
+      <h3>Upload Logo Sekolah</h3>
+      <input id="logo-sekolah" placeholder="URL Gambar Logo (contoh dari Imgur)" />
+      <button onclick="simpanLogoSekolah()">Simpan Logo</button>
+    </div>
+  </section>
+  <script>
     function showSection(id) {
       document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
       if (id === 'beranda') setBackground('beranda');
       else if (id === 'siswa') setBackground('kelas');
-    }
+    }function simpanLatar(mode) {
+  if (mode === 'beranda') {
+    const url = document.getElementById('url-latar-beranda').value;
+    localStorage.setItem('bg-beranda', url);
+    alert('Latar beranda disimpan!');
+  } else {
+    const kelas = document.getElementById('kelas-latar').value;
+    const url = document.getElementById('url-latar-kelas').value;
+    localStorage.setItem('bg-kelas-' + kelas, url);
+    alert('Latar kelas disimpan!');
+  }
+}
 
-    function simpanLatar(mode) {
-      if (mode === 'beranda') {
-        const url = document.getElementById('url-latar-beranda').value;
-        localStorage.setItem('bg-beranda', url);
-        alert('Latar beranda disimpan!');
-      } else {
-        const kelas = document.getElementById('kelas-latar').value;
-        const url = document.getElementById('url-latar-kelas').value;
-        localStorage.setItem('bg-kelas-' + kelas, url);
-        alert('Latar kelas disimpan!');
-      }
-    }
+function setBackground(mode) {
+  if (mode === 'beranda') {
+    document.body.style.backgroundImage = `url('${localStorage.getItem('bg-beranda') || ''}')`;
+  } else {
+    const kelas = document.getElementById('kelas-siswa').value || '1';
+    document.body.style.backgroundImage = `url('${localStorage.getItem('bg-kelas-' + kelas) || ''}')`;
+  }
+}
 
-    function setBackground(mode) {
-      if (mode === 'beranda') {
-        document.body.style.backgroundImage = `url('${localStorage.getItem('bg-beranda') || ''}')`;
-      } else {
-        const kelas = document.getElementById('kelas-siswa').value || '1';
-        document.body.style.backgroundImage = `url('${localStorage.getItem('bg-kelas-' + kelas) || ''}')`;
-      }
-    }
+function tambahSiswa() {
+  const kelas = document.getElementById('kelas-tambah').value;
+  const nama = document.getElementById('nama-siswa').value;
+  const alamat = document.getElementById('alamat-siswa').value;
+  if (!kelas || !nama) return alert('Isi semua data');
+  const data = JSON.parse(localStorage.getItem('siswa-' + kelas) || '[]');
+  data.push(`${nama} (${alamat})`);
+  localStorage.setItem('siswa-' + kelas, JSON.stringify(data));
+  alert('Siswa ditambahkan');
+}
 
-    function tambahSiswa() {
-      const kelas = document.getElementById('kelas-tambah').value;
-      const nama = document.getElementById('nama-siswa').value;
-      const alamat = document.getElementById('alamat-siswa').value;
-      if (!kelas || !nama) return alert('Isi semua data');
-      const data = JSON.parse(localStorage.getItem('siswa-' + kelas) || '[]');
-      data.push(`${nama} (${alamat})`);
-      localStorage.setItem('siswa-' + kelas, JSON.stringify(data));
-      alert('Siswa ditambahkan');
-    }
+function tampilkanSiswa() {
+  const kelas = document.getElementById('kelas-siswa').value;
+  const data = JSON.parse(localStorage.getItem('siswa-' + kelas) || '[]');
+  const list = document.getElementById('daftar-siswa');
+  list.innerHTML = '';
+  data.forEach(s => {
+    const li = document.createElement('li');
+    li.textContent = s;
+    list.appendChild(li);
+  });
+  setBackground('kelas');
+}
 
-    function tampilkanSiswa() {
-      const kelas = document.getElementById('kelas-siswa').value;
-      const data = JSON.parse(localStorage.getItem('siswa-' + kelas) || '[]');
-      const list = document.getElementById('daftar-siswa');
-      list.innerHTML = '';
-      data.forEach(s => {
-        const li = document.createElement('li');
-        li.textContent = s;
-        list.appendChild(li);
-      });
-      setBackground('kelas');
-    }
+function simpanJadwal() {
+  const kelas = document.getElementById('kelas-jadwal-admin').value;
+  const isi = document.getElementById('isi-jadwal').value;
+  localStorage.setItem('jadwal-' + kelas, isi);
+  alert('Jadwal disimpan');
+}
 
-    function simpanJadwal() {
-      const kelas = document.getElementById('kelas-jadwal-admin').value;
-      const isi = document.getElementById('isi-jadwal').value;
-      localStorage.setItem('jadwal-' + kelas, isi);
-      alert('Jadwal disimpan');
-    }
+function tampilkanJadwal() {
+  const kelas = document.getElementById('kelas-jadwal').value;
+  const isi = localStorage.getItem('jadwal-' + kelas);
+  const list = document.getElementById('daftar-jadwal');
+  list.innerHTML = '';
+  if (isi) isi.split('\n').forEach(j => {
+    const li = document.createElement('li');
+    li.textContent = j;
+    list.appendChild(li);
+  });
+}
 
-    function tampilkanJadwal() {
-      const kelas = document.getElementById('kelas-jadwal').value;
-      const isi = localStorage.getItem('jadwal-' + kelas);
-      const list = document.getElementById('daftar-jadwal');
-      list.innerHTML = '';
-      if (isi) isi.split('\n').forEach(j => {
-        const li = document.createElement('li');
-        li.textContent = j;
-        list.appendChild(li);
-      });
-    }
-
-    function tambahFotoKegiatan() {
-      const url = document.getElementById('fotoUrl').value;
-      const ket = document.getElementById('fotoKeterangan').value;
-      if (url && ket) {
-        const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
-        galeri.unshift({ url, ket });
-        localStorage.setItem('galeri', JSON.stringify(galeri));
-        document.getElementById('fotoUrl').value = "";
-        document.getElementById('fotoKeterangan').value = "";
-        tampilkanFotoKegiatan();
-      }
-    }
-
-    function tampilkanFotoKegiatan() {
-      const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
-      const kontainer = document.getElementById('foto-kegiatan');
-      kontainer.innerHTML = '';
-      galeri.slice(0, 2).forEach(foto => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <img src="${foto.url}" alt="Kegiatan">
-          <p>${foto.ket}</p>
-        `;
-        kontainer.appendChild(div);
-      });
-    }
-
-    showSection('beranda');
-    setBackground('beranda');
+function tambahFotoKegiatan() {
+  const url = document.getElementById('fotoUrl').value;
+  const ket = document.getElementById('fotoKeterangan').value;
+  if (url && ket) {
+    const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
+    galeri.unshift({ url, ket });
+    localStorage.setItem('galeri', JSON.stringify(galeri));
+    document.getElementById('fotoUrl').value = "";
+    document.getElementById('fotoKeterangan').value = "";
     tampilkanFotoKegiatan();
-  </script><!-- Informasi Sekolah -->
+  }
+}
+
+function tampilkanFotoKegiatan() {
+  const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
+  const kontainer = document.getElementById('foto-kegiatan');
+  kontainer.innerHTML = '';
+  galeri.slice(0, 2).forEach(foto => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <img src="${foto.url}" alt="Kegiatan">
+      <p>${foto.ket}</p>
+    `;
+    kontainer.appendChild(div);
+  });
+}
+
+function simpanLogoSekolah() {
+  const url = document.getElementById('logo-sekolah').value;
+  if (url) {
+    localStorage.setItem('logo-sekolah', url);
+    alert('Logo sekolah disimpan!');
+    tampilkanLogoSekolah();
+  }
+}
+
+function tampilkanLogoSekolah() {
+  const logo = localStorage.getItem('logo-sekolah');
+  const img = document.getElementById('logo-header');
+  if (logo && img) {
+    img.src = logo;
+  }
+}
+
+showSection('beranda');
+setBackground('beranda');
+tampilkanFotoKegiatan();
+tampilkanLogoSekolah();
+
+  </script>
   <footer style="background: #004494; padding: 0.5rem; color: #f0f0f0; font-family: Arial, sans-serif;">
     <div style="text-align: center; max-width: 800px; margin: auto;">
       <h2 style="margin: 0; font-size: 0.5rem;">SD Negeri 032 Mamugo</h2>
@@ -275,6 +300,7 @@ SK Pendirian: 01 Januari 1998 | SK Operasional: 421/DISDIK/-PRG/1219 (15 Mei 200
       <p style="margin: 0.5rem 0;"><strong>Email:</strong> <a href="mailto:habib27081981@gmail.com" style="color: #ffffff;">habib27081981@gmail.com</a> |
         <strong>Telp:</strong> 085723657734</p>
       <p style="margin-top: 1rem;"><strong>&copy; 2025 SD Negeri 032 Mamugo</strong></p>
-      </div>
-  </footer></body>
+    </div>
+  </footer>
+</body>
 </html>
