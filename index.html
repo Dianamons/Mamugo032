@@ -260,7 +260,7 @@ function tampilkanFotoKegiatan() {
   const galeri = JSON.parse(localStorage.getItem('galeri')) || [];
   const kontainer = document.getElementById('foto-kegiatan');
   kontainer.innerHTML = '';
-  galeri.slice(0, 2).forEach(foto => {
+  galeri.slice(0, 8).forEach(foto => {
     const div = document.createElement('div');
     div.innerHTML = `
       <img src="${foto.url}" alt="Kegiatan">
